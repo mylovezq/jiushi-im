@@ -383,7 +383,7 @@ public class ImFriendServiceImpl implements ImFriendService {
                         deleteFriendPack, req.getAppId());
 
                 //之后回调
-                if (appConfig.isAddFriendAfterCallback()){
+                if (appConfig.isDeleteFriendAfterCallback()){
                     DeleteFriendAfterCallbackDto callbackDto = new DeleteFriendAfterCallbackDto();
                     callbackDto.setFromId(req.getFromId());
                     callbackDto.setToId(req.getToId());
@@ -614,7 +614,7 @@ public class ImFriendServiceImpl implements ImFriendService {
                     deleteFriendPack, req.getAppId());
 
             //之后回调
-            if (appConfig.isAddFriendShipBlackAfterCallback()){
+            if (appConfig.isDeleteFriendShipBlackAfterCallback()){
                 AddFriendBlackAfterCallbackDto callbackDto = new AddFriendBlackAfterCallbackDto();
                 callbackDto.setFromId(req.getFromId());
                 callbackDto.setToId(req.getToId());

@@ -322,7 +322,7 @@ public class ImGroupServiceImpl implements ImGroupService {
             throw new ApplicationException(GroupErrorCode.UPDATE_GROUP_BASE_INFO_ERROR);
         }
 
-        if(appConfig.isModifyGroupAfterCallback()){
+        if(appConfig.isDestroyGroupAfterCallback()){
             DestroyGroupCallbackDto dto = new DestroyGroupCallbackDto();
             dto.setGroupId(req.getGroupId());
             callbackService.callback(req.getAppId()

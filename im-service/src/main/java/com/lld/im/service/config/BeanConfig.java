@@ -25,7 +25,7 @@ import java.lang.reflect.Method;
 @Configuration
 public class BeanConfig {
 
-//    @Autowired
+    @Autowired
     AppConfig appConfig;
 
 //    @Bean
@@ -34,31 +34,31 @@ public class BeanConfig {
 //                appConfig.getZkConnectTimeOut());
 //    }
 
-//    @Bean
-//    public RouteHandle routeHandle() throws Exception {
-//
-//        Integer imRouteWay = appConfig.getImRouteWay();
-//        String routWay = "";
-//
-//        ImUrlRouteWayEnum handler = ImUrlRouteWayEnum.getHandler(imRouteWay);
-//        routWay = handler.getClazz();
-//
-//        RouteHandle routeHandle = (RouteHandle) Class.forName(routWay).newInstance();
-//        if(handler == ImUrlRouteWayEnum.HASH){
-//
-//            Method setHash = Class.forName(routWay).getMethod("setHash", AbstractConsistentHash.class);
-//            Integer consistentHashWay = appConfig.getConsistentHashWay();
-//            String hashWay = "";
-//
-//            RouteHashMethodEnum hashHandler = RouteHashMethodEnum.getHandler(consistentHashWay);
-//            hashWay = hashHandler.getClazz();
-//            AbstractConsistentHash consistentHash
-//                    = (AbstractConsistentHash) Class.forName(hashWay).newInstance();
-//            setHash.invoke(routeHandle,consistentHash);
-//        }
-//
-//        return routeHandle;
-//    }
+    @Bean
+    public RouteHandle routeHandle() throws Exception {
+
+        Integer imRouteWay = appConfig.getImRouteWay();
+        String routWay = "";
+
+        ImUrlRouteWayEnum handler = ImUrlRouteWayEnum.getHandler(imRouteWay);
+        routWay = handler.getClazz();
+
+        RouteHandle routeHandle = (RouteHandle) Class.forName(routWay).newInstance();
+        if(handler == ImUrlRouteWayEnum.HASH){
+
+            Method setHash = Class.forName(routWay).getMethod("setHash", AbstractConsistentHash.class);
+            Integer consistentHashWay = appConfig.getConsistentHashWay();
+            String hashWay;
+
+            RouteHashMethodEnum hashHandler = RouteHashMethodEnum.getHandler(consistentHashWay);
+            hashWay = hashHandler.getClazz();
+            AbstractConsistentHash consistentHash
+                    = (AbstractConsistentHash) Class.forName(hashWay).newInstance();
+            setHash.invoke(routeHandle,consistentHash);
+        }
+
+        return routeHandle;
+    }
 
     @Bean
     public EasySqlInjector easySqlInjector () {

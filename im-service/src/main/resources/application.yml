@@ -6,12 +6,12 @@ spring:
     active: dev
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: DMYdmy.199754
-    url: jdbc:mysql://192.168.136.137:33011/im-core?serverTimezone=UTC&useSSL=false&characterEncoding=UTF8
+    password: mylovezq
+    url: jdbc:mysql://192.168.1.20:3306/im-core?serverTimezone=UTC&useSSL=false&characterEncoding=UTF8
     username: root
 
   redis:
-    host: 192.168.136.137
+    host: 192.168.1.20
     port: 6379
     jedis:
       pool:
@@ -21,9 +21,9 @@ spring:
         min-idle: 10
     password: mylovezq
   rabbitmq:
-    host: 192.168.136.137
+    host: 192.168.1.20
     port: 5672
-    addresses: 192.168.136.137
+    addresses: 192.168.1.20
     username: guest
     password: guest
     virtual-host: /
